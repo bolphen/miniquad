@@ -76,6 +76,7 @@ impl TextureFormat {
         match self {
             TextureFormat::RGB8 => GL_RGB8,
             TextureFormat::RGBA8 => GL_RGBA8,
+            TextureFormat::SRGBA8 => GL_SRGB8_ALPHA8,
             TextureFormat::RGBA16F => GL_RGBA16F,
             TextureFormat::Depth => GL_DEPTH_COMPONENT16,
             TextureFormat::Depth32 => GL_DEPTH_COMPONENT32,
@@ -93,6 +94,7 @@ impl From<TextureFormat> for (GLenum, GLenum, GLenum) {
         match format {
             TextureFormat::RGB8 => (GL_RGB, GL_RGB, GL_UNSIGNED_BYTE),
             TextureFormat::RGBA8 => (GL_RGBA, GL_RGBA, GL_UNSIGNED_BYTE),
+            TextureFormat::SRGBA8 => (GL_SRGB_ALPHA, GL_RGBA, GL_UNSIGNED_BYTE),
             TextureFormat::RGBA16F => (GL_RGBA16F, GL_RGBA, GL_FLOAT),
             TextureFormat::Depth => (GL_DEPTH_COMPONENT, GL_DEPTH_COMPONENT, GL_UNSIGNED_SHORT),
             TextureFormat::Depth32 => (GL_DEPTH_COMPONENT, GL_DEPTH_COMPONENT, GL_FLOAT),
