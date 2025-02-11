@@ -996,6 +996,7 @@ pub type XDefineCursor = unsafe extern "C" fn(_: *mut Display, _: Window, _: Cur
 #[derive(Clone, Default)]
 pub struct X11Extensions {
     pub utf8_string: Atom,
+    pub image_png: Atom,
     pub wm_protocols: Atom,
     pub wm_delete_window: Atom,
     pub _wm_state: Atom,
@@ -1138,6 +1139,11 @@ impl LibX11 {
             utf8_string: (self.XInternAtom)(
                 display,
                 b"UTF8_STRING\x00" as *const u8 as *const libc::c_char,
+                false as _,
+            ),
+            image_png: (self.XInternAtom)(
+                display,
+                b"image/png\x00" as *const u8 as *const libc::c_char,
                 false as _,
             ),
             wm_protocols: (self.XInternAtom)(

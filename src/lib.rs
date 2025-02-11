@@ -280,6 +280,11 @@ pub mod window {
         d.clipboard.get()
     }
 
+    pub fn clipboard_get_image() -> Option<Vec<u8>> {
+        let mut d = native_display().lock().unwrap();
+        d.clipboard.get_image()
+    }
+
     /// Save value to OS clipboard
     pub fn clipboard_set(data: &str) {
         let mut d = native_display().lock().unwrap();

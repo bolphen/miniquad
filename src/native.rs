@@ -75,6 +75,9 @@ pub(crate) enum Request {
 
 pub trait Clipboard: Send + Sync {
     fn get(&mut self) -> Option<String>;
+    fn get_image(&mut self) -> Option<Vec<u8>> {
+        None
+    }
     fn set(&mut self, string: &str);
 }
 

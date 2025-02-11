@@ -239,4 +239,9 @@ impl crate::native::Clipboard for X11Clipboard {
             claim_clipboard_ownership(&mut self.libx11, self.display, self.window, data.to_owned());
         };
     }
+
+    fn get_image(&mut self) -> Option<Vec<u8>> {
+        let image_png = self.libx11.extensions.image_png;
+        unsafe { get_clipboard(&mut self.libx11, self.display, self.window, image_png) }
+    }
 }
